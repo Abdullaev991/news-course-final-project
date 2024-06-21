@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block main %}
+{% load static %}
+<div class="card mt-2">
+    <div class="card-header">
+        <h4>Автор: {{ post.author }}</h4>
+        <p>{{ post.created }}</p>
+    </div>
+    <div class="card-body">
+        <img class="card-img-top mt-1 rounded figure-img img-fluid" src="{% static 'images/'|add:post.file_name %}" alt="Картинка пользователя {{ user }}" />
+        <h5 class="card-title mt-2">{{ post.title }}</h5>
+        <p class="card-text mt-2">{{ post.desc }}</p>
+        <p class="card-text mt-2 bold-solid">Комментарии:</p>
+    </div>
+    {% for comment in comments %}
+    <div class="card mt-2">
+        <div class="card-body">
+            <h2 class="card-title"> {{ comment.author|default:"Неизвестный пользователь" }}:</h2>
+            <span class="card-text">{{ comment.text }}</span>
+            <p class="right1"> {{ comment.created }} </p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

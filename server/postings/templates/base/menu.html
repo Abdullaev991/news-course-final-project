@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">{{user}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <ul class='nav justify-content-center'>
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/posts/">Посты</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/posting/">Оптравить пост</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/account/logout/">Выйти</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/account/register/">Зарегистрироваться</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/account/login/">Войти</a>
+            </li>
+          {% endif %}
+        </ul>
+        </div>
+    </div>
+  </div>
+</nav>
+<div class="roww">
+      <button class="btn btn-light mt-2 rounded border border-1" id='light'>Светлая Тема</button>
+      <button class="btn btn-light mt-2 rounded border border-1" id="dark">Тёмная Тема</button>
+</div>
+
+

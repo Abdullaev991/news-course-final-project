@@ -1,0 +1,41 @@
+{% extends "posts_sort_bar.html" %}
+
+
+{% block main %}
+{% load static %}
+<div class="row-cols-1">
+    {% for post_item in post_items %}
+        <div class="card mt-2">
+            <div class="card-header">
+                <h4>Автор: {{ post_item.author }}</h4>
+                <p>{{ post_item.created }}</p>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top mt-1 rounded figure-img img-fluid" src="{% static 'images/'|add:post_item.file_name %}" alt="Картинка пользователя {{ user }}" />
+                <h5 class="card-title mt-2">{{ post_item.title }}</h5>
+                <p class="card-text mt-2">{{ post_item.desc }}</p>
+                <p class="card-text mt-2 bold-solid">Комментарии:</p>
+            </div>
+            {% for comment in post_item.comment_items %}
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h2 class="card-title"> {{ comment.author }} </h2>
+                        <span class="card-text">{{ comment.text }}</span>
+                        <p class="right1"> {{ comment.created }} </p>
+                    </div>
+                </div>
+            {% endfor %}
+            <form class="mt-2" action="/post_comment/?post_id={{ post_item.id }}" method="post">
+                {% csrf_token %}
+                <label for="textInput">{{ comment_form.text.label }}</label>
+                {{ comment_form.text }}
+                <button class="btn btn-dark mt-2" type="submit">Оставить комментарий</button>
+            </form>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/index.js' %}"></script>
+{% endblock %}

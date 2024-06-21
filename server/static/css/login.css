@@ -1,0 +1,30 @@
+.for_login {
+    align-content: center;
+}
+
+.blog-title {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.for_add {
+    text-align: right;
+    color: blue;
+}
+
+.roww {
+    display: inline-block;
+}
+
+.card-img-bottom {
+    max-width: 50%;
+    height: auto;
+}
+
+.right {
+    text-align: right;
+}
+
+.right1 {
+    text-align: right;
+}

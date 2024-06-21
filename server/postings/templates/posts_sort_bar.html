@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+
+{% block header %}
+{% include 'base/menu.html' %}
+<form action="/posts/">
+    <span>Сортировать по:</span>
+    <select name="order_by">
+      <option value="created">возрастанию даты создания</option>
+      <option value="-created">убыванию даты создания</option>
+      <input type="submit" value="Sort">
+    </select>
+</form>
+{% endblock %}
