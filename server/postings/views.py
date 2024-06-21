@@ -9,7 +9,7 @@ from postings.forms import PostForm
 from postings.forms import CommentForm
 from postings.models import PostModel, CommentModel
 
-
+# test
 
 
 def opt_page(request):
