@@ -1,7 +1,26 @@
 {% extends "base/base.html" %}
 
 {% block main %}
-<h2>Login {{ request.user.username }} </h2>
-<p>Имя {{ request.user.first_name }}</p>
-<p>Имя {{ request.user.first_name }}</p>
+<div class="profile">
+    <h3>Login {{ request.user.username }} </h3>
+    <h4> Личная информация: </h4>
+    <ul>
+        {% if request.user.first_name and request.user.last_name and request.user.email is not None %}
+        <li>Имя: {{ request.user.first_name }}</li>
+        <li>Фамилия: {{ request.user.last_name }}</li>
+        <li>Почта: {{ request.user.email }}</li>
+        {% else %}
+        <li>Имя: Неизвестно</li>
+        <li>Фамилия: Неизвестно</li>
+        <li>Почта: Неизвестно</li>
+        {% endif %}
+        <li>Дата присоединения: {{ request.user.date_joined }}</li>
+        <li>Последний раз был в сети: {{ request.user.last_login }}</li>
+    </ul>
+    <button class="btn btn_site btn-dark rounded" onclick="document.location='update/'">Изменить информацию о себе
+    </button>
+    <br>
+    <button class="btn mt-2 btn-dark btn_site rounded" onclick="document.location='/posting/'">Поделиться новостями
+    </button>
+</div>
 {% endblock %}

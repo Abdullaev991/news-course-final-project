@@ -2,12 +2,12 @@
 
 {% block main %}
 <div class="for_login position-absolute top-50 start-50 translate-middle">
-  <h1> Регистрация </h1>
-  <form class="mt-2" action="/account/register/" method="post">
-    {% csrf_token %}
+    <h1> Регистрация </h1>
+    <form class="mt-2" action="/account/register/" method="post">
+        {% csrf_token %}
 
-    {{ reg_form.as_p }}
-    <button class="btn btn-light rounded" type="submit">Регистрация</button>
-  </form>
+        {{ reg_form.as_p }}
+        <button class="btn btn_site btn-dark rounded" type="submit">Регистрация</button>
+    </form>
 </div>
 {% endblock %}

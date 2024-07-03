@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block main %}
+<form action="/profile/update/" method="post">
+    {% csrf_token %}
+    <label class="form-label" for="username">Никнейм:</label>
+    {{ upd_form.username }}
+    <label class="form-label" for="first_name">Имя: </label>
+    {{ upd_form.first_name }}
+    <label class="form-label" for="last_name">Фамилия:</label>
+    {{ upd_form.last_name }}
+    <label class="form-label" for="username">Почта:</label>
+    {{ upd_form.email }}
+    <button class="btn btn_site btn-dark mt-2 rounded" type="submit">Редактировать</button>
+</form>
+{% endblock %}

@@ -2,12 +2,11 @@
 
 {% block header %}
 {% include 'base/menu.html' %}
-<form action="/posts/">
-    <span>Сортировать по:</span>
-    <select name="order_by">
-      <option value="created">возрастанию даты создания</option>
-      <option value="-created">убыванию даты создания</option>
-      <input type="submit" value="Sort">
+<form action="/" id="myform" name="myform">
+    <select class="form-select mt-2" aria-label="Default select example" name="order_by" onchange="changeFunction()">
+        <option selected> Сортировать по:</option>
+        <option value="created">возрастанию даты создания</option>
+        <option value="-created">убыванию даты создания</option>
     </select>
 </form>
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% block main %}
+<div class="profile">
+    <h3>Login {{ user.username }} </h3>
+    <h4> Личная информация: </h4>
+    <ul>
+        {% if user.first_name and user.last_name and user.email is not None %}
+        <li>Имя: {{ user.first_name }}</li>
+        <li>Фамилия: {{ user.last_name }}</li>
+        <li>Почта: {{ user.email }}</li>
+        {% else %}
+        <li>Имя: Неизвестно</li>
+        <li>Фамилия: Неизвестно</li>
+        <li>Почта: Неизвестно</li>
+        {% endif %}
+        <li>Дата присоединения: {{ user.date_joined }}</li>
+        <li>Последний раз был в сети:: {{ user.last_login }}</li>
+    </ul>
+</div>
+{% endblock %}

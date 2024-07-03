@@ -2,30 +2,42 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
+from postings.forms import CommentForm, ProfileUpdateForm
 from postings.forms import LoginForm
 from postings.forms import PostForm
-from postings.forms import CommentForm
 from postings.models import PostModel, CommentModel
 
-# test
 
-
-def opt_page(request):
-    context = {
-        'pagename': 'Настройки',
-    }
-
-    return render(request, 'base/option.html', context)
 
 def hello_page(request):
-    context = {'pagename': 'Приветcтвенная страница!',}
+    context = {'pagename': 'Приветcтвенная страница!', }
 
     return render(request, 'hello.html', context)
 
+
+def profile_update_page(request):
+    context = {
+        'pagename': 'Редактирование профиля'
+    }
+
+    if request.method == 'POST':
+        upd_form = ProfileUpdateForm(data=request.POST, instance=request.user)
+        if upd_form.is_valid():
+            upd_form.save()
+            return HttpResponseRedirect('/profile/')
+        else:
+            print(upd_form.errors)
+    else:
+        upd_form = ProfileUpdateForm(instance=request.user)
+    context['upd_form'] = upd_form
+
+    return render(request, 'accounts/profile_update.html', context)
+
+
 def register_page(request):
-    context = {'pagename': 'Регистрация',}
+    context = {'pagename': 'Регистрация', }
 
     if request.method == 'POST':
         reg_form = UserCreationForm(request.POST)
@@ -45,8 +57,9 @@ def register_page(request):
 
     return render(request, 'registration/registration.html', context)
 
+
 def login_page(request):
-    context = {'pagename': 'Авторизация',}
+    context = {'pagename': 'Авторизация', }
 
     if request.method == 'GET':
         login_form = LoginForm(request.GET)
@@ -65,10 +78,13 @@ def login_page(request):
 
     return render(request, 'registration/login.html', context)
 
+
 def logout_page(request):
     logout(request)
     return redirect("/")
 
+
+@login_required
 def post_list_page(request):
     context = {
         'pagename': 'Главная',
@@ -90,6 +106,7 @@ def post_list_page(request):
 
     return render(request, 'main.html', context)
 
+
 def new_comment(request):
     context = {
         'comment_form': CommentForm()
@@ -97,9 +114,11 @@ def new_comment(request):
 
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
-        comment_form.save(PostModel.objects.get(id=request.GET.get("post_id")),user=request.user)
+        comment_form.save(PostModel.objects.get(id=request.GET.get("post_id")), user=request.user)
+        print(f'Пользователь {request.user} ввёл комментарий: {request.POST.get("text")}')
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
 def posting_page(request):
     context = {
@@ -107,8 +126,12 @@ def posting_page(request):
     }
 
     if request.method == "POST":
-        post_form = PostForm(request.POST, request.FILES)
+        if request.FILES is not None:
+            post_form = PostForm(request.POST, request.FILES)
+        else:
+            post_form = PostForm(request.POST)
         post_form.save(request.user)
+        return HttpResponseRedirect('/')
     else:
         post_form = PostForm()
 
@@ -116,18 +139,21 @@ def posting_page(request):
 
     return render(request, 'post_add.html', context)
 
+
 def post_page(request, id):
     context = {
         'pagename': 'Новость',
+        'comment_form': CommentForm(),
 
     }
     post = PostModel.objects.get(id=id)
     context['post'] = post
     comments = CommentModel.objects.filter(
-        photo = id
+        photo=id
     )
     context['comments'] = comments
     return render(request, 'post.html', context)
+
 
 @login_required
 def profile_page(request):
@@ -136,3 +162,13 @@ def profile_page(request):
     }
 
     return render(request, 'accounts/profile_page.html', context)
+
+
+def profile_page_other(request, id):
+    context = {
+        'pagename': 'user'
+    }
+
+    user = User.objects.get(id=id)
+    context['user'] = user
+    return render(request, 'accounts/profile_page_others.html', context)

@@ -15,16 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.template.context_processors import static
 from django.urls import path
-from django.conf import settings
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from postings import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.hello_page),
-    path('posts/' , views.post_list_page),
+    path('', views.post_list_page),
     path('posting/', views.posting_page, ),
     path('option/', views.opt_page),
     path("account/register/", views.register_page),
@@ -32,6 +28,8 @@ urlpatterns = [
     path("accounts/login/", views.login_page),
     path("account/logout/", views.logout_page),
     path('post_comment/', views.new_comment),
-    path('posts/<int:id>', views.post_page),
-    path('profile/', views.profile_page)
+    path('<int:id>', views.post_page),
+    path('profile/', views.profile_page),
+    path('profile/<int:id>', views.profile_page_other),
+    path('profile/update/', views.profile_update_page)
 ]
