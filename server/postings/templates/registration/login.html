@@ -3,13 +3,13 @@
 
 {% block main %}
 <div class="for_login position-absolute top-50 start-50 translate-middle">
-<h1> Авторизация </h1>
-<form class="mt-2" action="/account/login/" method="get">
-<label class="form-label" for="usernameInput">{{ login_form.username.label }}</label>
-    {{ login_form.username }}
-<label class="form-label" for="passwordInput">{{ login_form.password.label }}</label>
-    {{ login_form.password }}
-    <button class="btn btn-light mt-2 rounded" type="submit" >Войти в систему</button>
-</form>
+    <h1> Авторизация </h1>
+    <form class="mt-2" action="/account/login/" method="get">
+        <label class="form-label" for="usernameInput">{{ login_form.username.label }}</label>
+        {{ login_form.username }}
+        <label class="form-label" for="passwordInput">{{ login_form.password.label }}</label>
+        {{ login_form.password }}
+        <button class="btn btn_site btn-dark mt-2 rounded" type="submit">Войти в систему</button>
+    </form>
 </div>
 {% endblock %}

@@ -1,13 +1,10 @@
 {% extends "base/base.html" %}
 
 {% block main %}
-<div class="">
-<h1> Создание поста </h1>
 <form action="/posting/" enctype="multipart/form-data" method="post">
     {% csrf_token %}
-    <div class="card">
+    <div class="card text-bg-light">
         <div class="card-body">
-            <h5 class="card-title text-center">Заполните форму!</h5>
             <label class="form-label" for="title">{{ post_form.title.label }}</label>
             {{ post_form.title }}
             <label class="form-label" for="desc">{{ post_form.desc.label }}</label>
@@ -15,9 +12,8 @@
             <div class="input-group mb-3 mt-2">
                 {{ post_form.file }}
             </div>
-            <button class="btn btn-dark rounded" type="submit"> Отправить </button>
+            <button class="btn bttt btn_card btn-dark rounded" type="submit"> Отправить</button>
         </div>
-    </div>
     </div>
 </form>
 {% endblock %}

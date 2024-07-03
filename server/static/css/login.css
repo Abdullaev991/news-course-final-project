@@ -27,4 +27,45 @@
 
 .right1 {
     text-align: right;
+    margin-bottom: -15px;
 }
+
+.profile {
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.comment {
+    padding-top: -200px;
+}
+
+.top2 {
+    margin-top: -10px;
+}
+
+.marg {
+    margin-top: 50px;
+}
+
+.secondary_text {
+    font-size: small;
+}
+
+.main_text1 {
+    font-size: 40px;
+}
+
+.nav_my_css_dark {
+    border: solid black 1px;
+    background-color: white;
+}
+
+.nav_my_css_light {
+    border: solid white 1px;
+    background: black;
+}
+
