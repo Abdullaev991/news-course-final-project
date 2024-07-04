@@ -22,7 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.post_list_page),
     path('posting/', views.posting_page, ),
-    path('option/', views.opt_page),
     path("account/register/", views.register_page),
     path("account/login/", views.login_page),
     path("accounts/login/", views.login_page),

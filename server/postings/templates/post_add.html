@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 
 {% block main %}
-<form action="/posting/" enctype="multipart/form-data" method="post">
+<form action="/posting/" enctype="multipart/form-data" method="post" class="mt-2">
     {% csrf_token %}
     <div class="card text-bg-light">
         <div class="card-body">
@@ -16,4 +16,22 @@
         </div>
     </div>
 </form>
+{% endblock %}
+
+{% block footer %}
+<hr>
+<div class="site-section">
+<div class="container">
+<div class="row">
+<div class="col-md pr-md-5 mb-4 mb-md-0">
+<h3>Об авторе</h3>
+<p class="mb-4"></p>
+<ul class="list-unstyled quick-info mb-4">
+<li>ФИО: Абдуллаев Оскар Айдынович</li>
+<li>Почта: oskarabdullaev07@gmail.com</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

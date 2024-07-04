@@ -2,11 +2,22 @@
 
 {% block header %}
 {% include 'base/menu.html' %}
+<div style="display: inline-block">
 <form action="/" id="myform" name="myform">
-    <select class="form-select mt-2" aria-label="Default select example" name="order_by" onchange="changeFunction()">
-        <option selected> Сортировать по:</option>
+    <select class="form-select mt-2" aria-label="Соритровать по:" name="order_by" id="sort_select" onchange="changeFunction()">
+        <option> Сортировать по:</option>
         <option value="created">возрастанию даты создания</option>
         <option value="-created">убыванию даты создания</option>
     </select>
 </form>
+</div>
+<div style="display: inline-block">
+<!--<form action="/" name="myform1" id="myform1" onclick="submitFunction()">-->
+<!--    <div class="form-check">-->
+<!--        <label for="checkbox">Показывать только мои записи</label>-->
+<!--        <input class="form-check-input right" type="checkbox" role="switch" id="checkbox">-->
+<!--    </div>-->
+<!--</form>-->
+</div>
+</div>
 {% endblock %}
