@@ -89,6 +89,10 @@ function changeFunction() {
     document.myform.submit();
 }
 
+function submitFunction() {
+    document.myform1.submit();
+}
+
 
 
 

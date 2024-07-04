@@ -2,6 +2,7 @@
 
 {% block main %}
 {% load static %}
+<button class="btn mt-2 btn_site btn-dark rounded" id="button" onclick="document.location='/'">Вернуться обратно</button>
 <div class="card mt-2 text-bg-light">
     <div class="card-header">
         <h4>Автор: {{ post.author }}</h4>
@@ -27,5 +28,22 @@
     </div>
     {% endfor %}
 </div>
-<a href="/"> <-- Вернуться обратно</a>
+{% endblock %}
+
+{% block footer %}
+<hr>
+<div class="site-section">
+<div class="container">
+<div class="row">
+<div class="col-md pr-md-5 mb-4 mb-md-0">
+<h3>Об авторе</h3>
+<p class="mb-4"></p>
+<ul class="list-unstyled quick-info mb-4">
+<li>ФИО: Абдуллаев Оскар Айдынович</li>
+<li>Почта: oskarabdullaev07@gmail.com</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
